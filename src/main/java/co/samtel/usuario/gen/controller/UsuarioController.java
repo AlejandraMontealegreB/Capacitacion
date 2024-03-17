@@ -6,7 +6,7 @@ import co.samtel.usuario.gen.type.UsuarioTypeInput;
 import co.samtel.usuario.gen.type.UsuarioTypeResponse;
 import co.samtel.usuario.gen.utils.ApplicationExeption;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.core.Application;
+
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
@@ -24,9 +24,10 @@ public class UsuarioController implements V1UsuarioApi {
 
     @Override
     public List<UsuarioTypeResponse> crearUsuario(UsuarioTypeInput usuarioTypeInput){
-            LOG.info("Inicia Crearusuario");
+            LOG.info("Inicia CrearUsuarioController");
         try {
-            Object usuariolType = usuarioServiceImpl.crearUsuario(usuarioTypeInput);
+            Object usuariolType = usuarioServiceImpl.
+                    crearUsuario(usuarioTypeInput);
             LOG.info("Termina Crearusuario");
             return (List<UsuarioTypeResponse>) usuariolType;
 
@@ -38,7 +39,7 @@ public class UsuarioController implements V1UsuarioApi {
 
 
     @Override
-    public List<UsuarioTypeResponse> listarUsuario(Integer idtblUser) {
+    public List<UsuarioTypeResponse> listarUsuario(Integer idtbl_user) {
         return null;
     }
 }
