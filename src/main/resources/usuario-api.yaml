@@ -47,7 +47,7 @@ paths:
           description: "Parámetros de entrada no validos."
         "404":
           description: "No se encuentra la novedad."
-  /v1/es/listUsuario/{idtbl_user}:
+  /v1/es/listUsuario/{id_user}:
     get:
       tags:
         - Listar usuario
@@ -73,6 +73,32 @@ paths:
           description: "Parámetros de entrada no validos."
         "404":
           description: "No se encuentra la novedad."
+
+
+  /v1/es/updateUsuario/{id_user}:
+    post:
+      tags:
+        - Update usuario
+      operationId: updateUsuario
+      requestBody:
+        description: usuario update
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UsuarioTypeUpdate"
+      responses:
+        "200":
+          description: Usuario update.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UsuarioTypeResponse"
+        "400":
+          description: "Parámetros de entrada no validos."
+        "404":
+          description: "No se encuentra la novedad."
 #---------------------------------------------
 #Se declaran los Modelos/Schemas del servicio
 #---------------------------------------------
@@ -85,9 +111,6 @@ components:
           type: string
         lastname:
           type: string
-        createat:
-          type: string
-          format: date
     UsuarioTypeInput:
       type: object
       properties:

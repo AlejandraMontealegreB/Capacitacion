@@ -20,7 +20,7 @@ import java.io.Serializable;
 public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idtbl_user")
+    @Column(name = "id_user")
     public Long id;
     @Column(name = "tbl_name")
     public String name;

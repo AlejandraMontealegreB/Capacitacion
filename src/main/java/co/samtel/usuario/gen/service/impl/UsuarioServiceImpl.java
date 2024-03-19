@@ -51,10 +51,10 @@ public class UsuarioServiceImpl {
         return usuarioTypeResponses;
     }
 
-    public List<UsuarioTypeResponse> listarUsuario(Integer idtbl_user){
+    public List<UsuarioTypeResponse> listarUsuario(Integer id_user){
         LOG.info("Inicia Listarusuario");
         try{
-            Long id = Long.valueOf(idtbl_user);
+            Long id = Long.valueOf(id_user);
             Usuario user = usuarioDao.findById(id);
             UsuarioTypeResponse response = usuarioMapper.usuarioEntityToTypeResponse(user);
             LOG.info("finaliza listar usuario id");
@@ -64,6 +64,22 @@ public class UsuarioServiceImpl {
             throw new ApplicationExeption(ERROR_SERVICIO + e.getMessage());
         }
     }
+
+    @Transactional
+    public UsuarioTypeInput updateUsuario(Integer id_user, UsuarioTypeInput usuarioTypeInput) {
+        LOG.info("Inicia actualizarUsuario");
+        try {
+            Long id = Long.valueOf(id_user);
+            Usuario user = usuarioDao.findById(id);
+            UsuarioTypeResponse response = usuarioMapper.usuarioEntityToTypeResponse(user);
+            LOG.info("finaliza listar usuario id");
+            }catch (ApplicationExeption e){
+                LOG.error("se presento erro al actualizar usuario por ID");
+             throw new ApplicationExeption(ERROR_SERVICIO + e.getMessage());
+            }
+        return usuarioTypeInput;
+    }
+
 }
 
 
